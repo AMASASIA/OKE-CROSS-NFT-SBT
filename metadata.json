@@ -1,0 +1,9 @@
+{
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ],
+  "name": "OKE CROSS Ver2.3 0812_MINT",
+  "description": "Ver 2.3 - Email-first flow with multi-format minting.",
+  "prompt": ""
+}

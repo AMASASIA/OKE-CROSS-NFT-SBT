@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OKE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+      
+      /* Base body styles from user request */
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #000;
+        color: white; /* To match previous text-white */
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Styles for Card Gallery Scroll Animation */
+      @keyframes enter-view {
+        from {
+          opacity: 0;
+          transform: translateY(20px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .scroll-animated-card {
+        /* A browser that supports scroll-driven animations will use this */
+        animation: enter-view linear both;
+        animation-timeline: view();
+        animation-range: entry 5% cover 40%;
+      }
+
+      /* Styles for AI Assistant & QR Modals */
+      :root{--bg:#fff;--fg:#0a0a0a;--muted:#6b7280;--border:#e5e7eb}
+      @media (prefers-color-scheme: dark){
+        :root{--bg:#0b0b0b;--fg:#f7f7f7;--muted:#9ca3af;--border:#1f2937}
+      }
+      .card{border:1px solid var(--border)}
+      /* Namespaced popup + modal to avoid CSS collisions */
+      .ai-pop{position:fixed;inset:0;display:none;place-items:center;z-index:9999}
+      .ai-pop.show{display:grid}
+      .ai-pop__bg{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+      .ai-card{position:relative;width:min(92vw,520px);border-radius:16px;background:#fff;
+        box-shadow:0 20px 50px rgba(0,0,0,.25);padding:20px; color: #0a0a0a;}
+      .ai-x{position:absolute;right:10px;top:10px;font-size:20px;cursor:pointer}
+      .ai-title{font-weight:700;font-size:20px;margin-bottom:6px}
+      .ai-body{color:#444;font-size:14px;margin:8px 0 16px}
+      .ai-row{display:flex;gap:10px}
+      .ai-btn{flex:1;padding:12px 14px;border-radius:12px;border:1px solid #e5e7eb;cursor:pointer}
+      .ai-btn--pri{background:#0b74ff;color:#fff;border:none}
+
+      /* QR modal (namespaced) */
+      .qr-pop{position:fixed;inset:0;display:none;place-items:center;z-index:9999}
+      .qr-pop.visible{display:grid}
+      .qr-bg{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+      .qr-card{position:relative;width:min(92vw,440px);border-radius:16px;background:#fff;
+        box-shadow:0 20px 50px rgba(0,0,0,.25);padding:20px; color: #0a0a0a;}
+      .qr-x{position:absolute;right:10px;top:10px;font-size:20px;cursor:pointer}
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.1/",
+    "react": "https://esm.sh/react@^19.1.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.12.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.536.0",
+    "ethers": "https://esm.sh/ethers@^6.13.1",
+    "framer-motion": "https://esm.sh/framer-motion@^11.3.12",
+    "dotenv/": "https://esm.sh/dotenv@^17.2.1/",
+    "hardhat": "https://esm.sh/hardhat@^2.26.2",
+    "hardhat/": "https://esm.sh/hardhat@^2.26.2/",
+    "@nomicfoundation/hardhat-toolbox": "https://esm.sh/@nomicfoundation/hardhat-toolbox@^6.1.0",
+    "nft.storage": "https://esm.sh/nft.storage@^7.1.1",
+    "process": "https://esm.sh/process@^0.11.10",
+    "dotenv": "https://esm.sh/dotenv@^17.2.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <!-- QRCode library for browsers -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
